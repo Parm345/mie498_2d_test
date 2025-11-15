@@ -18,16 +18,29 @@ dimensions      [0 2 -2 0 0 0 0];
 
 internalField   uniform 0;
 
+pRefCell        0;
+pRefValue       0;
+
 boundaryField
 {
-    "(movingWall|fixedWalls)"
+    inlet
     {
         type            zeroGradient;
     }
 
-    frontAndBack
+    outlet 
     {
-        type            empty;
+        type            fixedValue;
+        value           uniform 0; //reference value
+    }
+
+    outerwall{
+        type          zeroGradient;
+    }
+
+    wall-2d_v0_boss-extrude1
+    {
+        type            zeroGradient;
     }
 }
 

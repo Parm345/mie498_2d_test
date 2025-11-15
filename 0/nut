@@ -20,15 +20,21 @@ internalField   uniform 0;
 
 boundaryField
 {
-    "(movingWall|fixedWalls)"
+    outerwall 
     {
         type            nutkWallFunction;
         value           uniform 0;
     }
 
-    frontAndBack
+    inlet 
     {
-        type            empty;
+        type            calculated;
+        value           uniform 0;
+    }
+
+    outlet
+    {
+        type            zeroGradient;
     }
 }
 

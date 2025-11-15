@@ -20,15 +20,21 @@ internalField   uniform 0.00375;
 
 boundaryField
 {
-    "(movingWall|fixedWalls)"
+    outerwall 
     {
         type            kqRWallFunction;
         value           uniform 0.00375;
     }
 
-    frontAndBack
+    inlet 
     {
-        type            empty;
+        type            fixedValue;
+        value           uniform 0.01;
+    }
+
+    outlet
+    {
+        type    zeroGradient;
     }
 }
 

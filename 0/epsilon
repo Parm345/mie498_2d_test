@@ -20,15 +20,21 @@ internalField   uniform 0.00754;
 
 boundaryField
 {
-    "(movingWall|fixedWalls)"
+    outerwall 
     {
         type            epsilonWallFunction;
         value           uniform 0.00754;
     }
 
-    frontAndBack
+    inlet
     {
-        type            empty;
+        type            fixedValue;
+        value           uniform 0.001;
+    }
+
+    outlet
+    {
+        type            zeroGradient;
     }
 }
 
