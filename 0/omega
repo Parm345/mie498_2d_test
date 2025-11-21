@@ -9,59 +9,28 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       dictionary;
-    object      fvSolution;
+    class       volScalarField;
+    object      omega;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-solvers
+dimensions      [0 0 -1 0 0 0 0];
+
+internalField   uniform 22.4;
+
+boundaryField
 {
-    p
+    "(movingWall|fixedWalls)"
     {
-        solver          GAMG;
-        tolerance       1e-06;
-        relTol          0.1;
-        smoother        GaussSeidel;
+        type            omegaWallFunction;
+        value           uniform 22.4;
     }
 
-    pFinal
+    frontAndBack
     {
-        $p;
-        tolerance       1e-06;
-        relTol          0;
-    }
-
-    "(U|k|epsilon|omega|R|nuTilda)"
-    {
-        solver          smoothSolver;
-        smoother        GaussSeidel;
-        tolerance       1e-05;
-        relTol          0;
+        type            empty;
     }
 }
-
-PISO
-{
-    nCorrectors     2;
-    nNonOrthogonalCorrectors 0;
-    pRefCell        0;
-    pRefValue       0;
-}
-
-// relaxationFactors
-// {
-//     fields
-//     {
-//         p               0.3;
-//     }
-//     equations
-//     {
-//         U               0.7;
-//         // k               0.7;
-//         // epsilon         0.7;
-//     }
-// }
-
 
 
 // ************************************************************************* //
