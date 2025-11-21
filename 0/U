@@ -16,7 +16,7 @@ FoamFile
 
 dimensions      [0 1 -1 0 0 0 0];
 
-internalField   uniform (0 0 0);
+internalField   uniform (1 0 0);
 
 boundaryField
 {
@@ -34,6 +34,11 @@ boundaryField
     outlet
     {
         type            zeroGradient; 
+    }
+	
+    wall-2d_v0_boss-extrude1  //"(front|back)"
+    {
+        type            empty; 
     }
 }
 

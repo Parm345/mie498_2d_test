@@ -44,43 +44,6 @@ timePrecision   6;
 
 runTimeModifiable true;
 
-
-functions
-{
-    // Simple solver diagnostics (safe for laminar)
-    solverInfo
-    {
-        type            solverInfo;
-        functionObjectLibs ("libutilityFunctionObjects.so");
-        writeControl    timeStep;
-        writeInterval   1;
-    }
-
-    // Patch-averaged velocity at inlet (optional)
-    inletVelocity
-    {
-        type            patchAverage;
-        functionObjectLibs ("libutilityFunctionObjects.so");
-        patches         (inlet);
-        field           U;
-        operation       mean;
-        writeControl    timeStep;
-        writeInterval   1;
-    }
-
-    // Patch-averaged pressure at outlet (optional)
-    outletPressure
-    {
-        type            patchAverage;
-        functionObjectLibs ("libutilityFunctionObjects.so");
-        patches         (outlet);
-        field           p;
-        operation       mean;
-        writeControl    timeStep;
-        writeInterval   1;
-    }
-}
-
-
-
 // ************************************************************************* //
+
+// I suggest not throwing funciotns in until the case at least isn't crashing
